@@ -10,19 +10,20 @@ sudo ln -svf $(pwd)/git-http-server-cleanup.sh /usr/local/bin/git-http-server-cl
 ## Service
 
 ```bash
-sudo ln -svf $(pwd)/git-http-server.service /etc/systemd/system/git-http-server.service
+mkdir -p ~/.config/systemd/user
+ln -svf $(pwd)/git-http-server.service ~/.config/systemd/user/git-http-server.service
 ```
 
 ## Init
 
 ```bash
-sudo systemctl daemon-reload
+systemctl --user daemon-reload
 ```
 
 ## Manager
 
 ```bash
-sudo systemctl start git-http-server
-sudo systemctl status git-http-server
-sudo systemctl stop git-http-server
+systemctl --user start git-http-server
+systemctl --user stop git-http-server
+systemctl --user status git-http-server
 ```
